@@ -1,0 +1,168 @@
+
+
+
+
+<div class="i_bg bg_color">
+
+	<div class="i_ban_bg">
+    <img src="./Include/images/ban011.jpg" width="1200px" height="410px" >
+		<!--Begin Banner Begin-->
+        <!--End Banner End-->
+        
+    </div>
+
+    <div class="content mar_20">
+    	<img src="./Include/images/mban_1.jpg" width="1200" height="110" />
+    </div>
+	
+    <!--Begin 食品饮料 Begin-->
+    <div class="i_t mar_10">
+    	<span class="floor_num">1F</span>
+    	<span class="fl">食品饮料</span>                                
+        <span class="i_mores fr"><a href="#">咖啡</a>&nbsp; &nbsp; | &nbsp; &nbsp;<a href="#">休闲零食</a>&nbsp; &nbsp; | &nbsp; &nbsp;<a href="#">饼干糕点</a>&nbsp; &nbsp; | &nbsp; &nbsp;<a href="#">冲饮谷物</a>&nbsp; &nbsp; | &nbsp; &nbsp;<a href="#">营养保健</a></span>
+    </div>
+    <div class="content">
+    	<div class="food_left">
+        	<div class="food_ban">
+            	<div id="imgPlay2">
+                    <ul class="imgs" id="actor2">
+                        <li><a href="#"><img src="./Include/images/food_r.jpg" width="211" height="286" /></a></li>
+                        <li><a href="#"><img src="./Include/images/food_r.jpg" width="211" height="286" /></a></li>
+                        <li><a href="#"><img src="./Include/images/food_r.jpg" width="211" height="286" /></a></li>
+                    </ul>
+                    <div class="prev_f">上一张</div>
+                    <div class="next_f">下一张</div> 
+                </div>   
+            </div>
+            <div class="fresh_txt">
+            	<div class="fresh_txt_c">
+                	<a href="#">饼干糕点</a><a href="#">休闲零食</a><a href="#">饮料果汁</a><a href="#">牛奶乳品</a><a href="#">冲饮谷物</a><a href="#">营养保健</a><a href="#">冲饮谷物</a><a href="#">营养保健</a>
+                </div>
+            </div>
+        </div>
+        <div class="fresh_mid">
+        	<ul>
+
+            	<?php if(!empty($goods)){?>
+                <?php foreach($goods as $value){?>
+                <li>
+                    <div class="name"><a href="./index.php?c=Goods&a=product"><?php echo $value['name']?></a></div>
+                    <div class="price">
+                        <font>￥<span><?php echo $value['price']?></span></font> &nbsp; 25R
+                    </div>
+                    <div class="img"><a href="./index.php?c=Goods&a=product"><img src="./Include/images/food_1.jpg" width="185" height="155" /></a></div>
+                </li>
+                <?php } ?>
+                <?php  }else{echo '暂无数据'; }?>
+
+                
+
+                <li>
+                	<div class="name"><a href="#">莫斯利安酸奶</a></div>
+                    <div class="price">
+                    	<font>￥<span>96.00</span></font> &nbsp; 25R
+                    </div>
+                    <div class="img"><a href="#"><img src="./Include/images/food_3.jpg" width="185" height="155" /></a></div>
+                </li>
+
+                <li>
+                    <div class="name"><a href="#">莫斯利安酸奶</a></div>
+                    <div class="price">
+                        <font>￥<span>96.00</span></font> &nbsp; 25R
+                    </div>
+                    <div class="img"><a href="#"><img src="./Include/images/food_3.jpg" width="185" height="155" /></a></div>
+                </li>
+
+            </ul>
+        </div>
+        <div class="fresh_right">
+        	<ul>
+            	<li><a href="#"><img src="./Include/images/food_b1.jpg" width="260" height="220" /></a></li>
+                <li><a href="#"><img src="./Include/images/food_b2.jpg" width="260" height="220" /></a></li>
+            </ul>
+        </div>
+    </div>    
+    <!--End 食品饮料 End-->
+
+    <div class="content mar_20">
+    	<img src="./Include/images/mban_1.jpg" width="1200" height="110" />
+    </div>
+
+    <!--Begin 家居生活 Begin-->
+    <div class="i_t mar_10">
+    	<span class="floor_num">2F</span>
+    	<span class="fl">家居生活</span>                                
+        <span class="i_mores fr"><a href="#">床上用品</a>&nbsp; &nbsp; | &nbsp; &nbsp;<a href="#">家纺布艺</a>&nbsp; &nbsp; | &nbsp; &nbsp;<a href="#">餐具</a>&nbsp; &nbsp; | &nbsp; &nbsp;<a href="#">沙发</a>&nbsp; &nbsp; | &nbsp; &nbsp;<a href="#">汽车用品</a></span>                                              
+    </div>
+    <div class="content">
+    	<div class="home_left">
+        	<div class="home_ban">
+            	<div id="imgPlay5">
+                    <ul class="imgs" id="actor5">
+                        <li><a href="#"><img src="./Include/images/home_r.jpg" width="211" height="286" /></a></li>
+                        <li><a href="#"><img src="./Include/images/home_r.jpg" width="211" height="286" /></a></li>
+                        <li><a href="#"><img src="./Include/images/home_r.jpg" width="211" height="286" /></a></li>
+                    </ul>
+                    <div class="prev_h">上一张</div>
+                    <div class="next_h">下一张</div> 
+                </div>   
+            </div>
+            <div class="fresh_txt">
+            	<div class="fresh_txt_c">
+                	<a href="#">床上用品</a><a href="#">家纺布艺</a><a href="#">餐具水具</a><a href="#">锅具厨具</a><a href="#">沙发</a><a href="#">书柜</a><a href="#">狗粮</a><a href="#">家装建材</a><a href="#">汽车用品</a>
+                </div>
+            </div>
+        </div>
+        <div class="fresh_mid">
+        	<ul>
+            	<li>
+                	<div class="name"><a href="#">品质蓝色沙发</a></div>
+                    <div class="price">
+                    	<font>￥<span>2160.00</span></font> &nbsp; 50R
+                    </div>
+                    <div class="img"><a href="#"><img src="./Include/images/home_1.jpg" width="185" height="155" /></a></div>
+                </li>
+                <li>
+                	<div class="name"><a href="#">品质蓝色沙发</a></div>
+                    <div class="price">
+                    	<font>￥<span>2160.00</span></font> &nbsp; 50R
+                    </div>
+                    <div class="img"><a href="#"><img src="./Include/images/home_2.jpg" width="185" height="155" /></a></div>
+                </li>
+                <li>
+                	<div class="name"><a href="#">品质蓝色沙发</a></div>
+                    <div class="price">
+                    	<font>￥<span>2160.00</span></font> &nbsp; 50R
+                    </div>
+                    <div class="img"><a href="#"><img src="./Include/images/home_3.jpg" width="185" height="155" /></a></div>
+                </li>
+                <li>
+                	<div class="name"><a href="#">品质蓝色沙发</a></div>
+                    <div class="price">
+                    	<font>￥<span>2160.00</span></font> &nbsp; 50R
+                    </div>
+                    <div class="img"><a href="#"><img src="./Include/images/home_4.jpg" width="185" height="155" /></a></div>
+                </li>
+                <li>
+                	<div class="name"><a href="#">品质蓝色沙发</a></div>
+                    <div class="price">
+                    	<font>￥<span>2160.00</span></font> &nbsp; 50R
+                    </div>
+                    <div class="img"><a href="#"><img src="./Include/images/home_5.jpg" width="185" height="155" /></a></div>
+                </li>
+                <li>
+                	<div class="name"><a href="#">品质蓝色沙发</a></div>
+                    <div class="price">
+                    	<font>￥<span>2160.00</span></font> &nbsp; 50R
+                    </div>
+                    <div class="img"><a href="#"><img src="./Include/images/home_6.jpg" width="185" height="155" /></a></div>
+                </li>
+            </ul>
+        </div>
+        <div class="fresh_right">
+        	<ul>
+            	<li><a href="#"><img src="./Include/images/home_b1.jpg" width="260" height="220" /></a></li>
+                <li><a href="#"><img src="./Include/images/home_b2.jpg" width="260" height="220" /></a></li>
+            </ul>
+        </div>
+    </div>  

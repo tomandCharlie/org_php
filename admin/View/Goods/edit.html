@@ -1,0 +1,195 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>主要内容区main</title>
+<link href="./Include/css/css.css" type="text/css" rel="stylesheet" />
+<link href="./Include/css/main.css" type="text/css" rel="stylesheet" />
+<link rel="shortcut icon" href="./Include/images/main/favicon.ico" />
+<!-- 引入上传图片缩略图的jq方法 -->
+<script type="text/javascript" src="./Include/js/jquery.min.js"></script>
+<style>
+body{overflow-x:hidden; background:#f2f0f5; padding:15px 0px 10px 5px;}
+#searchmain{ font-size:12px;}
+#search{ font-size:12px; background:#548fc9; margin:10px 10px 0 0; display:inline; width:100%; color:#FFF}
+#search form span{height:40px; line-height:40px; padding:0 0px 0 10px; float:left;}
+#search form input.text-word{height:24px; line-height:24px; width:180px; margin:8px 0 6px 0; padding:0 0px 0 10px; float:left; border:1px solid #FFF;}
+#search form input.text-but{height:24px; line-height:24px; width:55px; background:url(./Include/images/main/list_input.jpg) no-repeat left top; border:none; cursor:pointer; font-family:"Microsoft YaHei","Tahoma","Arial",'宋体'; color:#666; float:left; margin:8px 0 0 6px; display:inline;}
+#search a.add{ background:url(./Include/images/main/add.jpg) no-repeat 0px 6px; padding:0 10px 0 26px; height:40px; line-height:40px; font-size:14px; font-weight:bold; color:#FFF}
+#search a:hover.add{ text-decoration:underline; color:#d2e9ff;}
+#main-tab{ border:1px solid #eaeaea; background:#FFF; font-size:12px;}
+#main-tab th{ font-size:12px; background:url(./Include/images/main/list_bg.jpg) repeat-x; height:32px; line-height:32px;}
+#main-tab td{ font-size:12px; line-height:40px;}
+#main-tab td a{ font-size:12px; color:#548fc9;}
+#main-tab td a:hover{color:#565656; text-decoration:underline;}
+.bordertop{ border-top:1px solid #ebebeb}
+.borderright{ border-right:1px solid #ebebeb}
+.borderbottom{ border-bottom:1px solid #ebebeb}
+.borderleft{ border-left:1px solid #ebebeb}
+.gray{ color:#dbdbdb;}
+td.fenye{ padding:10px 0 0 0; text-align:right;}
+.bggray{ background:#f9f9f9; font-size:14px; font-weight:bold; padding:10px 10px 10px 0; width:120px;}
+.main-for{ padding:10px;}
+.main-for input.text-word{ width:310px; height:36px; line-height:36px; border:#ebebeb 1px solid; background:#FFF; font-family:"Microsoft YaHei","Tahoma","Arial",'宋体'; padding:0 10px;}
+.main-for select{ width:310px; height:36px; line-height:36px; border:#ebebeb 1px solid; background:#FFF; font-family:"Microsoft YaHei","Tahoma","Arial",'宋体'; color:#666;}
+.main-for input.text-but{ width:100px; height:40px; line-height:30px; border: 1px solid #cdcdcd; background:#e6e6e6; font-family:"Microsoft YaHei","Tahoma","Arial",'宋体'; color:#969696; float:left; margin:0 10px 0 0; display:inline; cursor:pointer; font-size:14px; font-weight:bold;}
+#addinfo a{ font-size:14px; font-weight:bold; background:url(./Include/images/main/addinfoblack.jpg) no-repeat 0 1px; padding:0px 0 0px 20px; line-height:45px;}
+#addinfo a:hover{ background:url(./Include/images/main/addinfoblue.jpg) no-repeat 0 1px;}
+</style>
+</head>
+<body>
+<!--main_top-->
+<table width="99%" border="0" cellspacing="0" cellpadding="0" id="searchmain">
+  <tr>
+    <td width="99%" align="left" valign="top">您的位置：商品管理&nbsp;&nbsp;>&nbsp;&nbsp;添加新的商品</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" id="addinfo">
+    <a href="add.html" target="mainFrame" onFocus="this.blur()" class="add">新增商品</a>
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">
+    <form method="post" action="./index.php?c=goods&a=doedit&id=<?php echo $goodsinfo['id']?>" enctype="multipart/form-data" > 
+
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" id="main-tab">
+    
+      <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+          
+        <td align="right" valign="middle" class="borderright borderbottom bggray">商品名：</td>
+  
+        <td align="left" valign="middle" class="borderright borderbottom main-for">
+          <input type="text" name="name" value="<?php echo $goodsinfo['name'] ?>" class="text-word">
+          
+           <input type="hidden" name="id" value="<?php echo $goodsinfo['id'] ?>" class="text-word">
+        </td>
+      </tr>
+        
+        <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+
+        <td align="right" valign="middle" class="borderright borderbottom bggray">商品分类：</td>
+
+         <td align="left" valign="middle" class="borderright borderbottom main-for">
+          <select name="typeid" id="level">
+
+          <?php foreach($result as $value) { ?>
+          <?php 
+              // 找字符串中的逗号数量,代表是几级的分类
+
+              $num = substr_count($value['path'],','); 
+
+              //
+              $qianzhui = str_repeat('-',($num-1)*2);  
+          ?>
+            <option value="<?php echo $value['id'] ?>" >&nbsp;
+              <?php echo $qianzhui.$value['name'] ?>
+            </option>
+            <?php } ?>
+          </select>
+         </td>
+      </tr>
+
+      <td align="right" valign="middle" class="borderright borderbottom bggray">商品价格：</td>
+
+         <td align="left" valign="middle" class="borderright borderbottom main-for">
+         <input type="text" name="price" value="<?php echo $goodsinfo['price'] ?>" class="text-word">
+         </td>
+      </tr>
+
+      <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+        <td align="right" valign="middle" class="borderright borderbottom bggray">商品库存：</td>
+
+        <td align="left" valign="middle" class="borderright borderbottom main-for">
+        <input type="text" name="store" value="<?php echo $goodsinfo['store'] ?>" class="text-word">
+        </td>
+      </tr>
+
+      <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+        <td align="right" valign="middle" class="borderright borderbottom bggray">商品状态：</td>
+
+        <td align="left" valign="middle" class="borderright borderbottom main-for">
+        <input type="radio" name="status" value="0" <?php echo $goodsinfo['status']?'':'checked' ?> class="checked">上架
+
+        <input type="radio" name="status" value="1" "<?php echo $goodsinfo['status']?'':'checked' ?>"   class="checked">已下架
+        </td>
+      </tr>
+
+      <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+        <td align="right" valign="middle" class="borderright borderbottom bggray">商品图片：</td>
+        <td align="left" valign="middle" class="borderright borderbottom main-for">
+                           <!-- 这里的id="upload-file"和引入样式相同 -->
+        <input type="file" name="pic" value="" id="upload-file" class="text-word">
+        <!-- <input type="hidden" name='last_pic' value="<?php echo $goodsinfo['pic'] ?>"> -->
+                      
+        <!-- div框架放置图片,id和    -->
+        <div id="image-holder" style="display: inline-block;width: 80%;vertical-align: top;">
+        <!-- style 控制大小, src是默认存储图片的路径,$goodsinfo['pic']是文件名 -->
+          原图为:<img style="width:70px;" src="<?php echo '../public/goods/'.$goodsinfo['pic'] ?>" class="">
+        </div>
+
+        </td>
+      </tr>
+      <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+        <td align="right" valign="middle" class="borderright borderbottom bggray">商品销量：</td>
+
+        <td align="left" valign="middle" class="borderright borderbottom main-for">
+        <input type="text" name="sales" value="<?php echo $goodsinfo['sales'] ?>" class="text-word">
+        </td>
+      </tr>
+
+      <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+
+        <td align="right" valign="middle" class="borderright borderbottom bggray">生产厂家：</td>
+
+        <td align="left" valign="middle" class="borderright borderbottom main-for">
+        <input type="text" name="company" value="<?php echo $goodsinfo['company'] ?>" class="text-word">
+        </td>
+      </tr>
+
+
+      <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+        <td align="right" valign="middle" class="borderright borderbottom bggray">商品描述:</td>
+
+        <td align="left" valign="middle" class="borderright borderbottom main-for">
+
+        <textarea name="descr" id="" cols="30" rows="10" ><?php echo $goodsinfo['descr'] ?></textarea>
+        
+        </td>
+      </tr>
+
+      <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+        <td align="right" valign="middle" class="borderright borderbottom bggray">&nbsp;</td>
+
+        <td align="left" valign="middle" class="borderright borderbottom main-for">
+        <input name="" type="submit" value="提交" class="text-but">
+        <input name="" type="reset" value="重置" class="text-but"></td>
+        </tr>
+
+    </table>
+    </form>
+    </td>
+    </tr>
+</table>
+</body>
+<script type="text/javascript">
+  //上传图片预览
+  //#upload-file 和input图片中id的相同
+  $('#upload-file').on('change', function () {
+    if (typeof (FileReader) != "undefined") {
+      var image_holder = $('#image-holder');
+      image_holder.empty();
+
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $("<img />", {
+          "src": e.target.result,
+          "width": "80%",
+        }).appendTo(image_holder);
+      };
+      image_holder.show();
+      reader.readAsDataURL($(this)[0].files[0]);
+    } else {
+          // alert('你的浏览器不支持File Reader接口。');
+        }
+      });
+    </script>
+</html>

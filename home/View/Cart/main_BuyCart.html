@@ -1,0 +1,76 @@
+
+<div class="i_bg">  
+    <div class="content mar_20"> 
+    购物车  
+    </div>
+    <!--Begin 第一步：查看购物车 Begin -->
+    <div class="content mar_20">
+    	<table border="0" class="car_tab" style="width:1200px; margin-bottom:50px;" cellspacing="0" cellpadding="0">
+          <tr>
+            <td class="car_th" width="490">商品名称</td>
+            <td class="car_th" width="140">属性</td>
+            <td class="car_th" width="150">购买数量</td>
+            <td class="car_th" width="130">单价</td>
+            <td class="car_th" width="140">小计</td>
+            <td class="car_th" width="150">操作</td>
+          </tr>
+           
+            <?php if(!empty($_SESSION['cart'])){?>
+            <?php foreach($_SESSION['cart'] as $value){?>  
+          <tr>
+          <!-- 第一行第一格子 -->
+            <td>
+            	<div class="c_s_img"><img src="./Include/images/per_2.jpg" width="73" height="73" /></div>
+                <?php echo $value['name']?> 极致简约主义 国际名品
+            </td>
+            <!-- 2 -->
+            <td align="center">颜色：灰色</td>
+            <!-- 数量 -->
+            <td align="center">
+            	<!-- <div class="c_num"> -->
+                  
+                    <a href="./index.php?c=Cart&a=jian&id=<?php echo $value['id']?>"><button>-</button></a>
+                	 <?php echo $value['num']?>
+                    <a href="./index.php?c=cart&a=jia&id=<?php echo $value['id']?>"><button>+</button></a>
+                    
+                <!-- </div> -->
+            </td>
+            <!-- 单价 -->
+            <td align="center" style="color:#ff4e00;">￥<?php echo $value['price']?></td>
+            <!-- 小计 -->
+            <td align="center"><b style="font-size:17px; color:#ff4e00;">￥<?php echo $value['price']*$value['num']?></b></td>
+            <!-- 删除操作 -->
+            <td align="center"><a href="./index.php?c=Cart&a=del&id=<?php echo $value['id']?>" onclick="return confirm('确认将商品从购物车移除')">删除</a>&nbsp; &nbsp;
+            <a href="#">加入收藏</a></td>
+          </tr>
+          <!-- 商品行结束 -->
+          <?php $total += $value['price']*$value['num'];?>
+          
+          <?php } ?>
+          <!-- 第二行,清除和总价 -->
+          <tr height="70">
+          	<td colspan="6" style="font-family:'Microsoft YaHei'; border-bottom:0;">
+            	<label class="r_rad"><input type="checkbox" name="clear" checked="checked" /></label><label class="r_txt">清空购物车</label>
+                <span class="fr">商品总价：<b style="font-size:22px; color:#ff4e00;">￥<?php echo $total?></b></span>
+            </td>
+          </tr>
+          <!-- 第三行 继续购买和结算按钮 -->
+          <tr valign="top" height="150">
+          <td colspan="6" align="right">
+          <!-- 去首页 -->
+            	<a href="./index.php?c=index&a=index"><img src="./Include/images/buy1.gif" /></a>&nbsp; &nbsp; 
+            	<!-- 购买 -->
+              <?php var_dump($_SESSION['home'])?>
+            	<a href="./index.php?c=Pay&a=index&<?php $_SESSION['home']['id']?>"><img src="./Include/images/buy2.gif" /></a>
+            </td>
+          </tr>
+          <?php } else{?>
+          <tr valign="top" height="150">
+          	<td colspan="6" align="middle">
+            	<a href="./index.php?c=index&a=index">人家是空的,去商城看看</a>
+            </td>	
+           </tr>
+           <?php }?>
+           <?php // '$_SESSION['home']['id']' ?>
+        </table>     
+    </div>

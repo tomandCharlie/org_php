@@ -1,0 +1,147 @@
+
+
+<?//php var_dump($u_info) ?>
+<div class="i_bg">  
+<!-- <div class="" style="background:#FFCC00;">订单结算</div> -->
+<div class="content mar_20"> 
+    <font size="3">订单编号:<?php echo $u_info[oid] ?> </font> 
+    </div>
+    <!--Begin 第二步：确认订单信息 Begin -->
+    <div class="content mar_20">
+    	<div class="two_bg">
+        	<div class="two_t">
+            	<span class="fr"><a href="#">修改</a></span>商品列表
+            </div>
+            <form method="post" action="./index.php?c=Order&a=add">
+            <table  border="0" class="car_tab" style="width:1110px;" cellspacing="0" cellpadding="0">
+            
+              <tr>
+                <td class="car_th" width="490">商品名称</td>
+                <td class="car_th" width="140">属性</td>
+                <td class="car_th" width="150">购买数量</td>
+                <td class="car_th" width="130">单价</td>
+                <td class="car_th" width="140">小计</td>
+                <!-- <td class="car_th" width="150">操作</td> -->
+              </tr>
+                <?php foreach($_SESSION['cart'] as $value){?>
+              <tr>
+                <td>
+                    <div class="c_s_img"><img src="./Include/images/per_2.jpg" width="73" height="73" /></div>
+                    <?php echo $value['name']?> 极致简约主义 国际名品
+                </td>
+                <td align="center">颜色：灰色</td>
+                <td align="center"><?php echo $value['num']?></td>
+                <td align="center" style="color:#ff4e00;">￥<?php echo $value['price']?></td>
+                <td align="center">26R</td>
+              </tr>
+              <?php $total += $value['price']*$value['num'];?>
+              <?php } ?>
+              
+              <tr>
+                <td colspan="5" align="right" style="font-family:'Microsoft YaHei';">
+                    商品总价：￥<?php echo $total?> ； 返还积分 56R  
+                </td>
+              </tr>
+            </table>
+           
+            <!--收货表开始  -->
+            <div class="two_t">
+            	<span class="fr"><a href="#">修改</a></span>收货人信息
+            </div>
+            <table border="0" class="peo_tab" style="width:1110px;" cellspacing="0" cellpadding="0">
+                
+              <tr>
+              <?php echo $u_info['zname']  ?>
+              <!-- 在此处插入订单id(oid) 用户uid(id) -->
+                <input type="hidden" name="id" value="<?php echo $u_info['oid'] ?>">
+                <input type="hidden" name="uid" value="<?php echo $u_info['id'] ?>">
+                <td class="p_td" width="160">收件人</td>
+                <td width="395" value="33">
+                <input type="text" value="" name="linkname" style= "background-color:transparent;border:0;outline:none;"  > 
+                <input type="hidden" value="<?php echo $u_info[oid] ?>" name="oid"> 
+                </td>
+                <td class="p_td">电话</td>
+                <td><input type="text" value="" name="tel" style= "background-color:transparent;border:0;outline:none;"  > </td>
+              </tr>
+
+              <tr>
+                <td class="p_td">详细住址</td>
+                <td><input type="text" value="" name="address" style= "background-color:transparent;border:0;outline:none;" ></td>
+                <td class="p_td">邮政编码</td>
+                <td><input type="text" value="" name="code" style= "background-color:transparent;border:0;outline:none;" ></td>
+              </tr>
+<!-- 
+              <tr>
+                <td class="p_td">电话</td>
+                <td><input type="text" value="" name="tel" style= "background-color:transparent;border:0;outline:none;"  > </td>
+                <td class="p_td">手机</td>
+                <td><input type="text" value="" name="tel" style= "background-color:transparent;border:0;outline:none;"  ></td>
+              </tr> -->
+
+             <!--  <tr>
+                <td class="p_td">标志建筑</td>
+                <td><?php echo $u_info['address'] ?></td>
+                <td class="p_td">最佳送货时间</td>
+                <td></td>
+              </tr> -->
+
+            </table>
+            <!-- 收货信息结束 -->
+            
+            <div class="two_t">
+            	配送方式
+            </div>
+            <ul class="pay">
+                <li class="checked">默认快递<div class="ch_img"></div></li>
+                <li>平邮快递<div class="ch_img"></div></li>            
+            </ul>
+            <div class="two_t">
+            	支付方式
+            </div>
+            <ul class="pay">
+                <li class="checked">微信支付<div class="ch_img"></div></li>
+                <li>网银支付<div class="ch_img"></div></li>
+                <li>货到付款<div class="ch_img"></div></li>
+                <li>支付宝<div class="ch_img"></div></li>
+            </ul>
+
+            <div class="two_t">
+            	其他信息
+            </div>
+            <table border="0" class="car_tab" style="width:1110px;" cellspacing="0" cellpadding="0">
+              
+              <tr valign="top">
+                <td align="right" style="padding-right:0;"><b style="font-size:14px;">订单附言：</b></td>
+                <td style="padding-left:0;"><textarea class="add_txt" style="width:860px; height:50px;"></textarea></td>
+              </tr>
+              
+            </table>
+            
+            <table border="0" style="width:900px; margin-top:20px;" cellspacing="0" cellpadding="0">
+              <tr>
+                <td align="right">
+                    商品总价: <font color="#ff4e00">￥<?php echo $total?></font>  + 配送费用: <font color="#ff4e00">￥00.00</font>
+                </td>
+              </tr>
+              <tr height="70">
+                <td align="right">
+                	
+                  <b style="font-size:14px;">应付款金额：￥<span style="font-size:22px; color:#ff4e00;"><input style="border: 0px;outline:none;cursor: pointer;" type="text" name="total" readonly="readonly" value="<?php echo $total?>"> 
+                  
+                  </span></b>
+
+                </td>
+              </tr>
+              <!-- 结算 -->
+              <tr height="70">
+                <td align="right">
+                <!-- <img src="./Include/images/btn_sure.gif" /> -->
+                <input type="submit" value="" style="background:url(./Include/images/btn_sure.gif);width:178px;height:47px;" /></td>
+              </tr>
+            </table>
+            </form>
+            
+        	
+        </div>
+    </div>
+	<!--End 第二步：确认订单信息 End-->

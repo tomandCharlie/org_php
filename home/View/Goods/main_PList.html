@@ -1,0 +1,47 @@
+
+
+<div class="i_bg">
+	
+    <?php //var_dump($goods) ?>
+    <div class="content mar_20">
+        <div class="l_list">
+            <div class="list_c">           
+                <ul class="cate_list">
+               
+                    <?php foreach($goods as $value){ ?>
+                	<li>
+                    	<div class="img"><a href="#"><img src="../public/goods/<?php echo $value['pic'] ?>" width="210" height="" /></a></div>
+                        <div class="price">
+                            <font>￥<span><?php echo $value['price'] ?></span></font> &nbsp; 26R
+                        </div>
+                        <div class="name"><a href="#"><?php echo $value['name'] ?></a></div>
+                        <div class="carbg">
+                        	<a href="#" class="ss">收藏</a>
+
+                            <a href="./index.php?c=Cart&a=addCart&gid=<?php echo $value['id']?>" class="j_car">加入购物车</a>
+                            
+                        </div>
+                    </li>
+                    <?php } ?>
+
+                    <li>
+                    	<div class="img"><a href="#"><img src="./Include/images/per_2.jpg" width="210" height="185" /></a></div>
+                        <div class="price">
+                            <font>￥<span>198.00</span></font> &nbsp; 26R
+                        </div>
+                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
+                        <div class="carbg">
+                        	<a href="#" class="ss">收藏</a>
+                            <a href="#" class="j_car">加入购物车</a>
+                        </div>
+                    </li>
+                                                  
+                </ul>
+                
+                <div class="pages">
+                	<a href="#" class="p_pre">上一页</a><a href="#" class="cur">1</a><a href="#">2</a><a href="#">3</a>...<a href="#">20</a><a href="#" class="p_pre">下一页</a>
+                </div>
+           </div>
+        </div>
+    </div>
+    
